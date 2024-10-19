@@ -15,4 +15,4 @@ Para utilizar esta API, você precisará de um cliente HTTP como Postman ou Inso
 | POST | /saveproduct | { "code": "1", "name": "HDD" } | - | Cria um novo produto |
 | GET | /getproduct/{code}| id (int) | JSON (product) | Retorna um produto específico |
 | PUT | /editproduct | { "code": "1", "name": "Memória RAM" } | -| Atualiza um produto existente |
-| DELETE | /deleteproduct/{code} | id (int) | - | Deleta um usuário |
+| DELETE | /deleteproduct/{code} | id (int) | - | Deleta um produto |
