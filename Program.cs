@@ -37,7 +37,8 @@ app.MapDelete("/products/{code}", ([FromRoute] string code) =>{
 //     return dateStart + " - " + dataEnd;
 // });
 
-
+ProductRepository.Add(new Product("8", "Micro-ondas"));
+ProductRepository.Add(new Product("5", "Torradeira"));
 
 app.Run();
 
