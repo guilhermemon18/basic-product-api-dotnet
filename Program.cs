@@ -11,22 +11,22 @@ app.MapGet("/AddHeader", (HttpResponse response) =>{
     return new { name = "Stephany Batista", age = 35 };
 });
 
-app.MapPost("/saveproduct", (Product product) =>{
+app.MapPost("/products", (Product product) =>{
     ProductRepository.Add(product);
 });
 
 //api.app.com/user/{code}
-app.MapGet("/getproduct/{code}", ([FromRoute] string code) =>{
+app.MapGet("/products/{code}", ([FromRoute] string code) =>{
     var product = ProductRepository.GetProductByCode(code);
     return product;
 });
 
-app.MapPut("/editproduct", (Product product) =>{
+app.MapPut("/products", (Product product) =>{
     var productSaved = ProductRepository.GetProductByCode(product.Code);
     productSaved.Name = product.Name;
 });
 
-app.MapDelete("/deleteproduct/{code}", ([FromRoute] string code) =>{
+app.MapDelete("/products/{code}", ([FromRoute] string code) =>{
     var productSaved = ProductRepository.GetProductByCode(code);
     ProductRepository.Remove(productSaved);
 
