@@ -13,22 +13,28 @@ app.MapGet("/AddHeader", (HttpResponse response) =>{
 
 app.MapPost("/products", (Product product) =>{
     ProductRepository.Add(product);
+    return Results.Created($"/products/{product.Code}", product.Code);
 });
 
 //api.app.com/user/{code}
 app.MapGet("/products/{code}", ([FromRoute] string code) =>{
     var product = ProductRepository.GetProductByCode(code);
-    return product;
+    if(product != null){
+        return Results.Ok(product);        
+    }
+    return Results.NotFound();
 });
 
 app.MapPut("/products", (Product product) =>{
     var productSaved = ProductRepository.GetProductByCode(product.Code);
     productSaved.Name = product.Name;
+    return Results.Ok();
 });
 
 app.MapDelete("/products/{code}", ([FromRoute] string code) =>{
     var productSaved = ProductRepository.GetProductByCode(code);
     ProductRepository.Remove(productSaved);
+    return Results.Ok();
 
 });
 
